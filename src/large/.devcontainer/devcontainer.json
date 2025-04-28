@@ -16,6 +16,7 @@
     "containerEnv": {
       "EDITOR": "nano --wait"
     },
+    "containerUser": "vscode",
     "customizations": {
       "jetbrains": {
         "ide": "IntelliJ IDEA Ultimate",
