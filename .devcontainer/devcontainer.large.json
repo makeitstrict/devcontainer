@@ -1,0 +1,39 @@
+{
+    "name": "Gitpod",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+    "features": {
+      "ghcr.io/devcontainers/features/git:1": {},
+      "ghcr.io/devcontainers/features/go:1": {},
+      "ghcr.io/devcontainers/features/docker-in-docker:2": {
+        "version": "latest",
+        "moby": false
+      },
+      "ghcr.io/devcontainers/features/php:1": {},
+      "ghcr.io/devcontainers/features/node:1": {},
+      "ghcr.io/devcontainers-extra/features/angular-cli:2": {},
+      "ghcr.io/devcontainers-extra/features/typescript:2": {},
+    },
+    "containerEnv": {
+      "EDITOR": "nano --wait"
+    },
+    "customizations": {
+      "jetbrains": {
+        "ide": "IntelliJ IDEA Ultimate",
+        "plugins": [
+          "com.github.copilot",
+          "org.jetbrains.plugins.go",
+          "com.jetbrains.php",
+          "org.jetbrains.plugins.workspace",
+          "JavaScript",
+          "NodeJS",
+          "AngularJS",
+        ]
+      },
+      "vscode": {
+        "extensions": [
+          "ms-azuretools.vscode-docker"
+        ]
+      }
+    }
+  }
+  
