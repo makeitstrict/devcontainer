@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -32,6 +35,16 @@ jobs:
         with:
           use: true
 
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository_owner }}/${{ matrix.image_name }}
+          tags: |
+            type=raw,value={{date 'YYYYMMDD'}}
+            type=ref,event=pr
+            type=raw,value=latest,enable={{is_default_branch}}
+
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v2
         with:
@@ -46,3 +59,4 @@ jobs:
           imageName: ghcr.io/${{ github.repository_owner }}/${{ matrix.image_name }}
           push: always
           platform: linux/amd64,linux/arm64
+          tags: ${{ steps.meta.outputs.tags }}
